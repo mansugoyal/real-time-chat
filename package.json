@@ -2,9 +2,9 @@
   "name": "live-chat",
   "version": "1.0.0",
   "description": "real time chat to connect with people far away.",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "test": "nodemon app.js"
+    "test": "nodemon index.js"
   },
   "author": "coder054",
   "license": "ISC",

@@ -1,1 +1,1 @@
-# chat application usign express and scoket.io
+# chat application using express and socket.io
