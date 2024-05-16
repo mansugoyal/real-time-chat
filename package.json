@@ -4,12 +4,16 @@
   "description": "real time chat to connect with people far away.",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index.js"
+    "start:dev": "nodemon index.js"
   },
   "author": "coder054",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "socket.io": "^4.7.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }
