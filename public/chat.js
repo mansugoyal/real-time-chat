@@ -1,5 +1,5 @@
 // Make connection
-let socket = io.connect('http://127.0.0.1:9000');
+let socket = io.connect('http://127.0.0.1:4000');
 
 //Query DOM
 let message = document.getElementById('message'),
@@ -10,15 +10,24 @@ let message = document.getElementById('message'),
 
 
 //emit event
-btn.addEventListener('click',function(){
+btn.addEventListener('click', function () {
       socket.emit('chat-message', {
             message: message.value,
             handle: handle.value
       });
 });
 
+message.addEventListener('keypress', function () {
+      socket.emit('typing', handle.value)
+});
+
 
 //listen event
-socket.on('chat-message',function(data){
-      output.innerHTML += '<p><strong>' + data.handle + ': </strong>' + data.message+ '</p>';
+socket.on('chat-message', function (data) {
+      feedback.innerHTML = "";
+      output.innerHTML += '<p><strong>' + data.handle + ': </strong>' + data.message + '</p>';
 });
+
+socket.on('typing', function(data){
+      feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
+})

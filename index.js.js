@@ -1,15 +1,11 @@
-require('dotenv').config();
-
 let express = require('express');
 let socket = require('socket.io');
 
 let app = express();
-let host = process.env.HOST;
-let port = process.env.PORT || 5000;
 
 
-let server = app.listen(port, () => {
-    console.log(`App is listening on port ${host}:${port}`);
+let server = app.listen(4000, () => {
+    console.log(`App is listening on port 4000`);
 });
 
 //static files
@@ -25,4 +21,9 @@ io.on('connection',function(socket){
     socket.on('chat-message',function(data){
         io.sockets.emit('chat-message',data);
     });
+
+    socket.on('typing',function(data){
+        socket.broadcast.emit('typing',data)
+    })
+
 });
